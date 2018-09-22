@@ -21,12 +21,9 @@ public class WordGram {
 	public WordGram(String[] source, int start, int size) {
 		myWords = new String[size];
 		int a = 0;
-		for(int i = 0; i < source.length; i++) { 
-			 
-			if (i >= start && i < (start + size)) {
+		for(int i = start; i < start + size; i++) { 
 				myWords[a] = source[i];
 				a++; 
-			}
 		}
 		// TODO: initialize myWords and ...
 		myToString = null; 
