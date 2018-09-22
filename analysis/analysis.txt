@@ -1,4 +1,4 @@
-YOUR NAME and YOUR NETID
+Name: Shreyas Kulkarni netId: srk37 
 
 Run WordGramDiver for wordgrams of size 2-10 and record
 the number of WordGram values/objects that occur more than
@@ -15,25 +15,59 @@ values of WSIZE
 WSIZE    # duplicates
 2        60,453
 3        10,756
-4
-5
-7
-8
-9
-10
+4		 1,987
+5 		 667
+6		 362
+7     	 226	 
+8     	 151
+9	 	 105
+10	  	 73
 
 =====
 Explain in your own words the conceptual differences between 
 the benchmark and benchmarkShift methods. 
+
+
 Answer these questions: 
 
 (1) Why the results of these methods should be the same in 
 terms of changes made to the HashSet parameter.
+The results of these methods should be the same because they are both calculating the number
+of unique wordgrams created with a certain WSIZE. If a certain wordgram object is already 
+in the set, it won't add the wordgram in it. For the benchmark method, the set is used to 
+add new objects that have been created through a for loop and object construction and the 
+benchmarkShift method adds objects that have been created through the shiftAdd method instead.
+They both are essentially just adding all wordgrams possible of a certain size into the 
+set so that a total of unique wordgrams can be kept. 
+
 
 (2) What are the conceptual differences between the two
 benchmarking methods
+The benchmark method creates an arraylist of all the words and then converted that arraylist 
+to an array. It then iterated through every possibility of size WSIZE through the array 
+and created a wordGram object based on the for loops position and the seize. The benchmarkShift
+method goes through the first wSIZE words of the file and creates a wordgram object of those 
+words. It then scans the file one word at a time, using the shiftAdd method to create a new
+wordgram object of the next word. It too is iterating through the file one word at a time, 
+adding a wordgram object of size WSIZE, however the difference is that the benchmarkShift 
+method does this while scanning the words, so no large list is created and slowly iterated through
+twice. The file is essentially iterated through once for the benchmarkShift wherease
+the benchmark method does it twice, once to get the words into an arraylist and twice to
+create the wordgram objects. 
+
+
 
 (3) Is the total amount of memory allocated for arrays
 the same or different in the two methods? Account for
 arrays created in the methods and arrays created by
 WordGram objects. Try to be quantitative in answering.
+The total memory allocated for arrays is different between the two methods. The WordGram 
+objects all have the same amount of memory allocated for them because in the end they 
+will be creating the same number of WordGram objects and same sized arrays within those 
+objects. They only difference there is between the two methods is the first Arrays created.
+They benchmark method created an arrayList the size of all the words in the file and then 
+converts that arraylist to a String array. That string array is significantly bigger than the
+initial String Array created by the benchmarkShift method, which creates a string array 
+the size of WSIZE with the first WSIZE words in that array. That array is significantly 
+bigger than the array of all the words, therefore the memory allocated for the two methods 
+is different overall. 

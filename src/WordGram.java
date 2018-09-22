@@ -7,15 +7,16 @@
 
 public class WordGram {
 	
-	private String[] myWords;   
+	
+	private String[] myWords;  //The array of strings for each WordGram object 
 	private String myToString;  // cached string
 	private int myHash;         // cached hash value
 
 	/**
 	 * Create WordGram (add comments)
-	 * @param source
-	 * @param start
-	 * @param size
+	 * @param source The String array with all the words that will be selectively picked from
+	 * @param start This is the start position respective to the source. The word at the start position in source will be the first word of the field myWords. 
+	 * @param size this is the size of the myWords string array for the wordgram objext. 
 	 */
 	public WordGram(String[] source, int start, int size) {
 		myWords = new String[size];
@@ -45,8 +46,8 @@ public class WordGram {
 	}
 
 	/**
-	 * Complete this comment
-	 * @return
+	 * This returns the size of the objects myWord's field. Essentially however many words there are in the wordgram. 
+	 * @return int of the size of myWords. 
 	 */
 	public int length(){
 		return myWords.length;
@@ -54,6 +55,12 @@ public class WordGram {
 
 
 	@Override
+	/**
+	 * This checks if the parameter is of the WordGram sort and if so, checks if the WordGrams are equal based on the contents of their myWords. It goes through each word
+	 * and their corresponding position and determines equality. At the first worst that is different between the two objects, it will return false, otherwise the loops 
+	 * will go all they way through and return True
+	 * @return boolean for whether the two objects are equal or not. 
+	 */
 	public boolean equals(Object o) {
 		if (! (o instanceof WordGram) || o == null){
 			return false;
@@ -73,6 +80,10 @@ public class WordGram {
 	}
 
 	@Override
+	/**
+	 * This returns the hashcode of the objects myWords list in string form. Only calculated once. 
+	 * @return HashCode of the string format of myWords
+	 */
 	public int hashCode(){
 		if(this.myHash == 0) { 
 			this.myHash = this.toString().hashCode();
@@ -83,8 +94,11 @@ public class WordGram {
 
 	/**
 	 * Create and complete this comment
+	 * This method creates a copy of the current object and then modifies the new object's myWords by removing the first word of the array and adds the parameter at the end
+	 * of the copy's array. The size of myWords is conserved, just the first word has been removed, all the words moved to the right, and another word was added to the end.
+	 * This method returns the copy object with the new myWord String array.  
 	 * @param last is last String of returned WordGram
-	 * @return			
+	 * @return a wordgram object with a modified myWords string array
 	 */
 	public WordGram shiftAdd(String last) {
 		WordGram wg = new WordGram(myWords,0,myWords.length);
@@ -98,6 +112,10 @@ public class WordGram {
 	}
 
 	@Override
+	/**
+	 * This returns the objects myWords list in string form. Only calculated once. 
+	 * @return String format of myWords
+	 */
 	public String toString(){
 		if (this.myToString == null) { 
 			this.myToString = String.join(" ", myWords); 
