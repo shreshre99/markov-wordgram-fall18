@@ -26,7 +26,11 @@ WSIZE    # duplicates
 =====
 Explain in your own words the conceptual differences between 
 the benchmark and benchmarkShift methods. 
-
+The benchmark method laboriously iterates through an array of all the words of a file, creating wordgram 
+objects of certain size with words respective of where in the array it is in. The benchmark shift uses
+the shiftadd method to create new wordgram objects and uses the scanner to pull words. The benchmarkShift
+method goes through all the words of the file once where as the benchmark goes through it twice through
+the scanner and the master array. 
 
 Answer these questions: 
 
